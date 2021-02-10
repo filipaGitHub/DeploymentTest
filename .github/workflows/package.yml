@@ -34,7 +34,7 @@ jobs:
           
       - uses: sfdx-actions/setup-sfdx@v1
         with:
-          sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
+          sfdx-auth-url: ${{ secrets.AUTH_SECRET_D }}
             
       # sudo npm install sfdx-git-delta@latest -g  
       - name: Install App and Create Delta
@@ -50,4 +50,4 @@ jobs:
         run: sfdx force:source:convert --manifest=package/package.xml --outputdir=convert
 
       - name: Run Tests and Deploy
-        run: sfdx force:mdapi:deploy --deploydir=convert --testlevel=RunLocalTests --checkonly -u TestGitHub
+        run: sfdx force:mdapi:deploy --deploydir=convert --testlevel=RunLocalTests --checkonly -w30

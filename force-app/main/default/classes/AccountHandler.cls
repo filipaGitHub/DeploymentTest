@@ -1,6 +1,7 @@
 public with sharing class AccountHandler {
     public static void CreateNewOpportunity(List<Account>accts){
         List<Opportunity> opps = new List<Opportunity>();
+        System.debug('hello');
         for(Account a : accts){
             opportunity opp = new Opportunity();
             opp.Name = a.Name + 'opportunity';

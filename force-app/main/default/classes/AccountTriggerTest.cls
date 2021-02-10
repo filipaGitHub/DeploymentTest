@@ -1,5 +1,7 @@
+@isTest
 public class AccountTriggerTest {
-    public AccountTriggerTest(){
-        //my code here
-    }
+static testMethod void testInsertAccount() {
+CreatingAccount ca = new CreatingAccount();
+ca.createAccount('TestclassAcc1');
+}
 }

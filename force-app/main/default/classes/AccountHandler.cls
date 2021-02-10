@@ -1,5 +1,5 @@
 public with sharing class AccountHandler {
-    public AccountHandler(String name){
+    public Account createaAccount(String name){
         //comment
     Account acc = new Account();
     acc.Name = name;

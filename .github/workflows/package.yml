@@ -38,4 +38,4 @@ jobs:
             
       # sudo npm install sfdx-git-delta@latest -g  
       - name: Install App and Create Delta
-        run: echo y | npm install sfdx-git-delta@latest -g
+        run: sudo npm install sfdx-git-delta@latest -g

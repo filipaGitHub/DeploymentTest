@@ -1,16 +1,8 @@
 public with sharing class AccountHandler {
-    public static void CreateNewOpportunity(List<Account>accts){
-        List<Opportunity> opps = new List<Opportunity>();
-        for(Account a : accts){
-            opportunity opp = new Opportunity();
-            opp.Name = a.Name + 'opportunity';
-            opp.AccountId = a.Id;
-            opp.StageName = 'Prospecting';
-            opp.CloseDate = System.Today().addMonths(1);
-            opps.add(opp);
-        }
-        if(opps.size() > 0){
-            insert opps;
-        }
+    public Account createaAccount(String name){
+        //comment
+    Account acc = new Account();
+    acc.Name = name;
+    return acc;
     }
 }

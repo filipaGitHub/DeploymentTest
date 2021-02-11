@@ -48,7 +48,7 @@ jobs:
       
       - uses: actions/upload-artifact@v2
         with:
-          name: my-artifact
+          name: package/package.xml
           path: path/to/artifact/package.xml    
           
       - name: Convert Metadata

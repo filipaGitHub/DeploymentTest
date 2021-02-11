@@ -43,7 +43,7 @@ jobs:
           git fetch --all
           git --no-pager diff --name-status origin/dev origin/master
           mkdir changed-sources
-          sfdx sgd:source:delta --to origin/dev --from origin/master --output changed-sources/ --generate-delta
+          sgd --to origin/dev --from origin/master --repo . --output changed-sources/ --generate-delta
           cat package/package.xml
       
       - uses: actions/upload-artifact@v2

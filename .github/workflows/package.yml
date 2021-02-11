@@ -56,14 +56,3 @@ jobs:
 
       - name: Run Tests and Deploy
         run: sfdx force:mdapi:deploy --deploydir=convert --testlevel=RunLocalTests --checkonly -w30
-      
-      - run: mkdir -p path/to/artifact
-
-      - run: |
-          echo hello > path/to/artifact/world.txt
-          cat path/to/artifact/world.txt
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: my-artifact
-          path: path/to/artifact/world.txt

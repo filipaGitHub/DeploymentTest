@@ -46,8 +46,6 @@ jobs:
           sgd --to origin/dev --from origin/master --repo . --output .
           cat package/package.xml
       
-      - run: mkdir -p path/to/artifact
-      
       - uses: actions/upload-artifact@v2
         with:
           name: my-artifact

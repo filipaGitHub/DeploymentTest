@@ -45,6 +45,13 @@ jobs:
           git --no-pager diff --name-status origin/dev origin/master
           sgd --to origin/dev --from origin/master --repo . --output .
           cat package/package.xml
+      
+      - run: mkdir -p path/to/artifact
+      
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: path/to/artifact/package.xml    
           
       - name: Convert Metadata
         run: sfdx force:source:convert --manifest=package/package.xml --outputdir=convert

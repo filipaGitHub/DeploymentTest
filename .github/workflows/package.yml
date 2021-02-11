@@ -42,23 +42,25 @@ jobs:
           sudo npm install sfdx-git-delta@latest -g
           git fetch --all
           git --no-pager diff --name-status origin/dev origin/master
-          sgd --to origin/dev --from origin/master --repo . --output .
-          cat package/package.xml
+          sgd --to origin/dev --from origin/master --repo . --output test/package1.xml
+          cat test/package1.xml
       
       - uses: actions/upload-artifact@v2
         with:
           name: my-artifact
-          path: package/package.xml  
+          path: test/package1.xml 
           
       - name: Convert Metadata
-        run: sfdx force:source:convert --manifest=package/package.xml --outputdir=convert
+        run: sfdx force:source:convert --manifest=test/package1.xml --outputdir=convert
 
       - name: Run Tests and Deploy
         run: sfdx force:mdapi:deploy --deploydir=convert --testlevel=RunLocalTests --checkonly -w30
       
       - run: mkdir -p path/to/artifact
 
-      - run: echo hello > path/to/artifact/world.txt
+      - run: |
+          echo hello > path/to/artifact/world.txt
+          cat path/to/artifact/world.txt
 
       - uses: actions/upload-artifact@v2
         with:

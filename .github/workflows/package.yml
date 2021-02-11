@@ -41,7 +41,6 @@ jobs:
         run: |
           sudo npm install sfdx-git-delta@latest -g
           git fetch --all
-          git checkout -b pr
           git --no-pager diff --name-status origin/dev origin/master
           sgd --to origin/dev --from origin/master --repo . --output .
           cat package/package.xml

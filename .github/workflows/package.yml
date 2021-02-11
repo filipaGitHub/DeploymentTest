@@ -48,8 +48,7 @@ jobs:
       
       - uses: actions/upload-artifact@v2
         with:
-          name: package/package.xml
-          path: path/to/artifact/package.xml    
+          path: package/package.xml    
           
       - name: Convert Metadata
         run: sfdx force:source:convert --manifest=package/package.xml --outputdir=convert

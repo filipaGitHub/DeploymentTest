@@ -7,7 +7,7 @@ name: Check deploy package
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   pull_request:
-    branches: [ dev ]
+    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -38,9 +38,9 @@ jobs:
         run: |
           sudo npm install sfdx-git-delta@latest -g
           git fetch --all
-          git --no-pager diff --name-status origin/main origin/dev
+          git --no-pager diff --name-status origin/main origin/master
           mkdir changed-sources
-          sgd --to origin/main --from origin/dev --repo . --output changed-sources/ --generate-delta
+          sgd --to origin/main --from origin/master --repo . --output changed-sources/ --generate-delta
           cat changed-sources/package/package.xml
       
       - uses: actions/upload-artifact@v2

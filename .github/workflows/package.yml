@@ -34,7 +34,7 @@ jobs:
           
       - uses: sfdx-actions/setup-sfdx@v1
         with:
-          sfdx-auth-url: ${{ secrets.AUTH_SECRET_D }}
+          sfdx-auth-url: ${{ secrets.AUTH_SECRET_V }}
             
       # sudo npm install sfdx-git-delta@latest -g  
       - name: Install App and Create Delta

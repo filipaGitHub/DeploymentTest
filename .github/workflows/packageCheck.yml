@@ -49,7 +49,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: package uploaded
-          path: changed-sources/package/package.xml
+          path: changed-sources/
           
       - name: 'Convert Metadata'
         run: sfdx force:source:convert --manifest=changed-sources/package/package.xml --outputdir=convert

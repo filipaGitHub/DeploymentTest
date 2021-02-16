@@ -3,6 +3,5 @@ public inherited sharing class OppCreate {
         // new opportunity
         //orange
         //pink
-        //red
     }
 }

@@ -52,4 +52,4 @@ jobs:
           path: changed-sources/
 
       - name: 'Run Tests and Deploy'
-        run: sfdx force:mdapi:deploy --deploydir=changed-sources/ -w30
+        run: sfdx force:mdapi:deploy --deploydir=changed-sources/force-app -w30

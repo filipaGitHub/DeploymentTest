@@ -50,9 +50,6 @@ jobs:
         with:
           name: package uploaded
           path: changed-sources/
-          
-      - name: 'Convert Metadata'
-        run: sfdx force:source:convert --manifest=changed-sources/ --outputdir=convert
 
       - name: 'Run Tests and Deploy'
         run: sfdx force:mdapi:deploy --deploydir=convert -w30

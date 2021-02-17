@@ -43,16 +43,16 @@ jobs:
           git fetch --all
           git checkout origin/master
           mkdir changed-sources	
-          sgd --to HEAD --from HEAD^ --repo . --output .
-          cat package/package.xml
+          sgd --to HEAD --from HEAD^ --repo . --output changed-sources/ --generate-delta
+          cat changed-sources/package/package.xml
       
       - uses: actions/upload-artifact@v2
         with:
           name: package uploaded
-          path: package/package.xml
+          path: changed-sources/package/package.xml
           
       - name: 'Convert Metadata'
-        run: sfdx force:source:convert --manifest=package/package.xml --outputdir=convert
+        run: sfdx force:source:convert --manifest=changed-sources/package/package.xml --outputdir=convert
          
       - name: 'Run Tests and Deploy'
         run: sfdx force:mdapi:deploy --deploydir=convert -w30

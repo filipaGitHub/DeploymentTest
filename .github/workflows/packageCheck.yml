@@ -35,6 +35,11 @@ jobs:
       - uses: sfdx-actions/setup-sfdx@v1
         with:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET_V }}
+          
+      - name: Source Branch
+        env:
+          SOURCE_BRANCH: ${{ toJSON(github.head_ref) }}
+        run: echo "$SOURCE_BRANCH"        
             
       # sudo npm install sfdx-git-delta@latest -g  
       - name: Install App and Create Delta
@@ -43,13 +48,8 @@ jobs:
           git fetch --all
           git --no-pager diff --name-status origin/dev origin/master
           mkdir changed-sources
-          sgd --to origin/dev --from origin/master --repo . --output changed-sources/ --generate-delta
+          sgd --to "$SOURCE_BRANCH" --from origin/master --repo . --output changed-sources/ --generate-delta
           cat changed-sources/package/package.xml
-          
-      - name: Dump GitHub context 2
-        env:
-          GITHUB_CONTEXT2: ${{ toJSON(github.head_ref) }}
-        run: echo "$GITHUB_CONTEXT2"    
           
       - uses: actions/upload-artifact@v2
         with:

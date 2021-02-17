@@ -42,7 +42,8 @@ jobs:
           sudo npm install sfdx-git-delta@latest -g
           git fetch --all
           git --no-pager diff --name-status origin/dev origin/master
-          sgd --to origin/dev --from origin/master --output changed-sources/ --generate-delta
+          mkdir changed-sources
+          sgd --to origin/dev --from origin/master --repo . --output changed-sources/ --generate-delta
           cat changed-sources/package/package.xml
           
       - name: Convert Metadata

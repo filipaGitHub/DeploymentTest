@@ -43,7 +43,7 @@ jobs:
           git fetch --all
           git checkout origin/master
           mkdir changed-sources	
-          sgd --to HEAD --from HEAD^ --output .
+          sgd --to HEAD --from HEAD^ --repo . --output .
           cat package/package.xml
       
       - uses: actions/upload-artifact@v2

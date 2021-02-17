@@ -52,7 +52,9 @@ jobs:
           path: changed-sources/    
           
       - name: Convert Metadata
-        run: sfdx force:source:convert --manifest=changed-sources/package/package.xml --outputdir=convert
+        run: |
+          sfdx force:source:convert --manifest=changed-sources/package/package.xml --outputdir=convert
+          sfdx force:source:convert --manifest=changed-sources/destructiveChanges/destructiveChanges.xml --outputdir=convert
 
       - name: Run Tests and Deploy
         run: sfdx force:mdapi:deploy --deploydir=convert --checkonly -w30

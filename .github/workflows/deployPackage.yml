@@ -38,7 +38,6 @@ jobs:
         run: |
           sudo npm install sfdx-git-delta@latest -g
           git fetch --all
-          git --no-pager diff --name-status origin/dev origin/master
           mkdir changed-sources
           sgd --to origin/dev --from origin/master --repo . --output changed-sources/ --generate-delta
           cat changed-sources/package/package.xml
@@ -46,11 +45,10 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: package uploaded
-          path: changed-sources/package/package.xml
+          path: changed-sources/
           
       - name: 'Convert Metadata'
         run: sfdx force:source:convert --manifest=changed-sources/package/package.xml --outputdir=convert
-        
-      
+         
       - name: 'Run Tests and Deploy'
         run: sfdx force:mdapi:deploy --deploydir=convert -w30

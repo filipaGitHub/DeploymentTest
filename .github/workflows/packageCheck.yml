@@ -57,4 +57,4 @@ jobs:
           sfdx force:source:convert --manifest=changed-sources/destructiveChanges/destructiveChanges.xml --outputdir=convert
 
       - name: Run Tests and Deploy
-        run: sfdx force:mdapi:deploy --deploydir=convert --checkonly -w30
+        run: sfdx force:mdapi:deploy --zipfile=changed-sources --checkonly -w30

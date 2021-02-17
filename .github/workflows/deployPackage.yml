@@ -43,7 +43,7 @@ jobs:
           git fetch --all
           git checkout origin/master
           mkdir changed-sources
-          sgd --to 81c4e377c2ca9055e25603c1a91b175ee01e5f2d --from 9abe0c146a4c207b7a6d09fb3d55463ab8311806 --repo . --output changed-sources/ --generate-delta
+          git diff HEAD^ HEAD
           cat changed-sources/package/package.xml
       
       - uses: actions/upload-artifact@v2

@@ -38,6 +38,7 @@ jobs:
         run: |
           sudo npm install sfdx-git-delta@latest -g
           git fetch --all
+          git checkout master
           mkdir changed-sources
           sfdx sgd:source:delta --to HEAD --from HEAD^ --output changed-sources/ --generate-delta
           cat changed-sources/package/package.xml

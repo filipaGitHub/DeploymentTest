@@ -43,7 +43,7 @@ jobs:
           git fetch --all
           git --no-pager diff --name-status origin/dev origin/master
           sgd --to origin/dev --from origin/master --output changed-sources/ --generate-delta
-          cat package/package.xml
+          cat changed-sources/package/package.xml
           
       - name: Convert Metadata
         run: sfdx force:source:convert --manifest=changed-sources/package/package.xml --outputdir=convert

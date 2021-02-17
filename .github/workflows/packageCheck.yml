@@ -48,7 +48,7 @@ jobs:
           
       - name: Dump GitHub context 2
         env:
-          GITHUB_CONTEXT2: ${{ toJSON(github.ref) }}
+          GITHUB_CONTEXT2: ${{ toJSON(github.head_ref) }}
         run: echo "$GITHUB_CONTEXT2"    
           
       - uses: actions/upload-artifact@v2

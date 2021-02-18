@@ -39,7 +39,7 @@ jobs:
       - name: Source Branch
         env:
           SOURCE_BRANCH: ${{ toJSON(github.head_ref) }}
-          TARGET_BRANCH: ${{ toJSON(github.github.base_ref) }}
+          TARGET_BRANCH: ${{ toJSON(github.base_ref) }}
         run: |
           echo "$SOURCE_BRANCH"
           echo "$TARGET_BRANCH"

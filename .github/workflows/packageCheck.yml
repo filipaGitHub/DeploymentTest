@@ -1,11 +1,9 @@
   
-# This is a basic workflow to help you get started with Actions
-
 name: Check deploy package
 
 # Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on pull request event but only for the master branch
   pull_request:
     branches: [ master ]
 
@@ -45,7 +43,7 @@ jobs:
           echo "$TARGET_BRANCH"
             
       # sudo npm install sfdx-git-delta@latest -g  
-      - name: Install App, Create Delta and Show package
+      - name: Install App and Create Delta and Show package
         run: |
           sudo npm install sfdx-git-delta@latest -g
           git fetch --all
